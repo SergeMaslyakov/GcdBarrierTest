@@ -15,6 +15,9 @@ class GcdBarrierTests: XCTestCase {
     private var readExpectation: XCTestExpectation?
     private var writeExpectation: XCTestExpectation?
 
+    private let readQueue = DispatchQueue(label: "ReadQueue", qos: .default, attributes: .concurrent)
+    private let writeQueue = DispatchQueue(label: "WriteQueue", qos: .default, attributes: .concurrent)
+
     override func setUp() {
         super.setUp()
 
@@ -35,10 +38,10 @@ class GcdBarrierTests: XCTestCase {
         let readGroup = DispatchGroup()
         let writeGroup = DispatchGroup()
 
-        for idx in 1..<501 {
+        for idx in 1..<1501 {
 
             readGroup.enter()
-            DispatchQueue.global(qos: .background).asyncAfter(deadline: .now() + (0.1 + 0.001 * Double(idx)), execute: {
+            readQueue.asyncAfter(deadline: .now() + (0.1 + 0.001 * Double(idx)), execute: {
                 _ = self.dataHolder?.getAccessToken()
 
                 readGroup.leave()
@@ -46,7 +49,7 @@ class GcdBarrierTests: XCTestCase {
 
             if idx % 2 == 0 {
                 writeGroup.enter()
-                DispatchQueue.global(qos: .default).asyncAfter(deadline: .now() + (0.1 * 0.01 * Double(idx)), execute: {
+                writeQueue.asyncAfter(deadline: .now() + (0.1 * 0.01 * Double(idx)), execute: {
                     let token = "\(idx)"
 
                     self.dataHolder?.set(accessToken: token)
