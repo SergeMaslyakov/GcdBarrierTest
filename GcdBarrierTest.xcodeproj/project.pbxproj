@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DAC0D8F720EA253300764980 /* SerialDataHolder.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0D8F620EA253300764980 /* SerialDataHolder.swift */; };
+		DAC0D8F920EA25DB00764980 /* GcdSerialQueueTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC0D8F820EA25DB00764980 /* GcdSerialQueueTest.swift */; };
 		DAC9789F20E2397700C63625 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC9789E20E2397700C63625 /* AppDelegate.swift */; };
 		DAC978A120E2397700C63625 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DAC978A020E2397700C63625 /* ViewController.swift */; };
 		DAC978A420E2397700C63625 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DAC978A220E2397700C63625 /* Main.storyboard */; };
@@ -27,6 +29,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		DAC0D8F620EA253300764980 /* SerialDataHolder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SerialDataHolder.swift; sourceTree = "<group>"; };
+		DAC0D8F820EA25DB00764980 /* GcdSerialQueueTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GcdSerialQueueTest.swift; sourceTree = "<group>"; };
 		DAC9789B20E2397700C63625 /* GcdBarrierTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GcdBarrierTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DAC9789E20E2397700C63625 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DAC978A020E2397700C63625 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -86,6 +90,7 @@
 				DAC978A720E2397900C63625 /* LaunchScreen.storyboard */,
 				DAC978AA20E2397900C63625 /* Info.plist */,
 				DAC978BE20E2407700C63625 /* AsyncDataHolder.swift */,
+				DAC0D8F620EA253300764980 /* SerialDataHolder.swift */,
 			);
 			path = GcdBarrierTest;
 			sourceTree = "<group>";
@@ -93,6 +98,7 @@
 		DAC978B220E2397900C63625 /* GcdBarrierTests */ = {
 			isa = PBXGroup;
 			children = (
+				DAC0D8F820EA25DB00764980 /* GcdSerialQueueTest.swift */,
 				DAC978B320E2397900C63625 /* GcdBarrierTests.swift */,
 				DAC978B520E2397900C63625 /* Info.plist */,
 			);
@@ -201,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DAC978A120E2397700C63625 /* ViewController.swift in Sources */,
+				DAC0D8F720EA253300764980 /* SerialDataHolder.swift in Sources */,
 				DAC9789F20E2397700C63625 /* AppDelegate.swift in Sources */,
 				DAC978BF20E2407700C63625 /* AsyncDataHolder.swift in Sources */,
 			);
@@ -210,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DAC0D8F920EA25DB00764980 /* GcdSerialQueueTest.swift in Sources */,
 				DAC978B420E2397900C63625 /* GcdBarrierTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

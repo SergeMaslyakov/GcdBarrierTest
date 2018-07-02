@@ -1,17 +1,17 @@
 //
-//  GcdBarrierTests.swift
+//  GcdSerialQueueTest.swift
 //  GcdBarrierTests
 //
-//  Created by Serge Maslyakov on 26/06/2018.
+//  Created by Serge Maslyakov on 26/07/2018.
 //  Copyright © 2018 SergeM. All rights reserved.
 //
 
 import XCTest
 @testable import GcdBarrierTest
 
-class GcdBarrierTests: XCTestCase {
+class GcdSerialQueueTest: XCTestCase {
 
-    private var dataHolder: AsyncDataHolder?
+    private var dataHolder: SerialDataHolder?
     private var readExpectation: XCTestExpectation?
     private var writeExpectation: XCTestExpectation?
 
@@ -21,20 +21,20 @@ class GcdBarrierTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        dataHolder = AsyncDataHolder()
+        dataHolder = SerialDataHolder()
         readExpectation = XCTestExpectation(description: "READ")
         writeExpectation = XCTestExpectation(description: "WRITE")
     }
 
     override func tearDown() {
-        //dataHolder = nil
-        //readExpectation = nil
-        //writeExpectation = nil
+        dataHolder = nil
+        readExpectation = nil
+        writeExpectation = nil
 
         super.tearDown()
     }
 
-    func testAsyncAccess() {
+    func testAccess() {
         let readGroup = DispatchGroup()
         let writeGroup = DispatchGroup()
 
