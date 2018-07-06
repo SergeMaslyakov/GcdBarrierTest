@@ -10,24 +10,19 @@ import Foundation
 
 class SerialDataHolder {
 
-    private let privateSerialQueue = DispatchQueue(label: "SerialDataHolderQueue", qos: .background)
+    private let serialQueue = DispatchQueue(label: "SerialDataHolderQueue", qos: .background)
     private var accessToken: String?
 
     func set(accessToken: String?) {
-        privateSerialQueue.sync {
+        serialQueue.async {
             print("Write token: \(accessToken ?? "nil")")
             self.accessToken = accessToken
         }
     }
 
     func getAccessToken() -> String? {
-        var accessToken: String?
-
-        privateSerialQueue.async {
-            accessToken = self.accessToken
-            print("Read token: \(accessToken ?? "nil")")
+        return serialQueue.sync {
+            accessToken
         }
-
-        return accessToken
     }
 }

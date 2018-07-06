@@ -27,9 +27,9 @@ class GcdBarrierTests: XCTestCase {
     }
 
     override func tearDown() {
-        //dataHolder = nil
-        //readExpectation = nil
-        //writeExpectation = nil
+        dataHolder = nil
+        readExpectation = nil
+        writeExpectation = nil
 
         super.tearDown()
     }
@@ -41,15 +41,16 @@ class GcdBarrierTests: XCTestCase {
         for idx in 1..<1001 {
 
             readGroup.enter()
-            readQueue.asyncAfter(deadline: .now() + (0.1 + 0.001 * Double(idx)), execute: {
-                _ = self.dataHolder?.getAccessToken()
+            readQueue.asyncAfter(deadline: .now() + .milliseconds(100 + idx), execute: {
+                let token = self.dataHolder?.getAccessToken()
+                print("Read token: \(token ?? "nil")")
 
                 readGroup.leave()
             })
 
-            if idx % 10 == 0 {
+            if idx % 2 == 0 {
                 writeGroup.enter()
-                writeQueue.asyncAfter(deadline: .now() + (0.1 * 0.01 * Double(idx)), execute: {
+                writeQueue.asyncAfter(deadline: .now() + .milliseconds(100 + idx), execute: {
                     let token = "\(idx)"
 
                     self.dataHolder?.set(accessToken: token)

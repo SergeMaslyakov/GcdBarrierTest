@@ -10,24 +10,19 @@ import Foundation
 
 class AsyncDataHolder {
 
-    private let privateQueue = DispatchQueue(label: "AsyncDataHolderQueue", qos: .background, attributes: .concurrent)
+    private let asyncQueue = DispatchQueue(label: "AsyncDataHolderQueue", qos: .background, attributes: .concurrent)
     private var accessToken: String?
 
     func set(accessToken: String?) {
-        privateQueue.async(flags: .barrier) {
+        asyncQueue.async(flags: .barrier) {
             print("Write token: \(accessToken ?? "nil")")
             self.accessToken = accessToken
         }
     }
 
     func getAccessToken() -> String? {
-        var accessToken: String?
-
-        privateQueue.sync {
-            accessToken = self.accessToken
-            print("Read token: \(accessToken ?? "nil")")
+        return asyncQueue.sync {
+            accessToken
         }
-
-        return accessToken
     }
 }
